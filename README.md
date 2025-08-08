@@ -17,7 +17,7 @@ pip install --upgrade pymappings
 ## Requirements
 
 - Python 3.8+
-- MAPPINGS V (compiled separately)
+- [MAPPINGS V](https://mappings.anu.edu.au/)
 - `numpy`, `pandas`, `matplotlib`, `scipy`, `astropy`
 
 These will be installed automatically via `pip`.
