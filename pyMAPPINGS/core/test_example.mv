@@ -1,0 +1,38 @@
+yes   : change abundance
+/home/teja/mappings520/abund/GC2016/GC_ZO_M0500.abn
+no    : no more changes
+no    : no offsets
+yes   : include dust
+no    : use default depletions
+no    : allow grain destruction
+M     : MRN distribution
+yes   : Include PAH molecules?
+0.3   : fraction of Carbon Dust Depletion in PAHs
+Q     : PAH switch on QHDH < Value
+4e2   : PAH switch on Value
+no    : graphite grains to be cospatial with PAHs
+no    : Evaluate dust temperatures and IR flux?
+P6    : the main Mappings model to use
+D     : Default ionisation values
+H     : Input spectral energy distribution data (usually Starburst99)
+/home/teja/mappings520/scripts/modelgrids/HII-grid401/Q/inputs/cont_a05t23isp_vm802.spectrum
+9     : Age of the HII region. Age = (n-1)*0.5 Myr
+X     : eXit with current source
+N     : Include cosmic ray heating
+S     : Spherical Geometry. (For Plane parallel, 'P', different options)
+L     : Source by Luminosity
+T     : Total or Ionising Luminosity
+40.00    : bolometric source luminosity (log erg/s)
+B     : isoBaric, (const pressure)
+6.00 :  Pressure regime (p/k, <10 as log)
+4.00     : log(Initial temperature)
+1.00     : filling factor (0<f<=1)
+q     : Give initial radius in terms of distance or Q(N) (d/q) ***nb old  options
+8.00 :   Q at inner radius (< 100 as log)
+y     : Volume integration over the whole sphere? (y/n)
+E     : Equilibrium ionization balance.
+0.0200  : Step value of the photon absorption fraction  *******
+A     : Ionisation bounded, 99% neutral **********
+A   : Standard output
+testing : ID string
+X   : end model
