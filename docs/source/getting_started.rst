@@ -23,8 +23,8 @@ Unzip the archive:
 
     unzip mappings_V-521.zip
 
-Build the Executable
---------------------
+Build the MAPPINGS V Executable
+-------------------------------
 
 Navigate into the extracted folder and run:
 
@@ -36,14 +36,13 @@ Navigate into the extracted folder and run:
 This will compile the MAPPINGS executable (``map52``) in the 
 ``lab/`` directory.
 
-Test the Build
---------------
-
+Test the MAPPINGS V Build
+-------------------------
 To confirm that MAPPINGS has built correctly, run:
 
 .. code-block:: bash
 
-    cd ~/mappings_V-520/lab
+    cd ~/mappings520/lab
     ./map52
 
 If the build was successful, you should see the MAPPINGS interactive prompt.
@@ -54,7 +53,7 @@ If the build was successful, you should see the MAPPINGS interactive prompt.
 Installing pyMAPPINGS
 ---------------------
 
-You can install **pyMAPPINGS** using ``pip``:
+You can now install **pyMAPPINGS** using ``pip``:
 
 .. code-block:: bash
 
