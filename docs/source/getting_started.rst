@@ -36,6 +36,9 @@ Navigate into the extracted folder and run:
 This will compile the MAPPINGS executable (``map52``) in the 
 ``lab/`` directory.
 
+.. note::
+   - MAPPINGS is installed by default into the users home area ~/mappings520
+
 Test the MAPPINGS V Build
 -------------------------
 To confirm that MAPPINGS has built correctly, run:
