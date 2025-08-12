@@ -426,7 +426,7 @@ class InputModel(object):
     
     def write_input_file(self, filename=None, id_string=None):
         """
-        Generate and write the MAPPINGS input file.
+        Generate and write the MAPPINGS input file as .mv.
         
         Parameters:
         - filename (str): Output filename (default: {model_name}.mv)
@@ -435,9 +435,15 @@ class InputModel(object):
         Returns:
         - str: Path to the created input file
         """
+        # Define the base directory for saving .mv files
+        base_dir = os.path.expanduser("~/mappings520/lab/")
+        
         # Set default filename
         if filename is None:
             filename = f"{self.model_name}.mv"
+            
+        # Full path inside ~/mappings520/lab/
+        full_path = os.path.join(base_dir, filename)
         
         # Generate ID string if not provided
         if id_string is None:
@@ -448,10 +454,10 @@ class InputModel(object):
         
         # Write to file
         try:
-            with open(filename, 'w') as f:
+            with open(full_path, 'w') as f:
                 f.write(content)
-            print(f"Input file written to: {filename}")
-            return filename
+            print(f"Input file written to: {full_path}")
+            return full_path
         except IOError as e:
             raise IOError(f"Failed to write input file: {e}")
     
@@ -503,11 +509,8 @@ class InputModel(object):
             
             # Grain distribution
             distribution_map = {
-                'M': 'M     : MRN distribution',
-                'K': 'K     : KMH distribution (placeholder)', 
-                'W': 'W     : WD distribution (placeholder)',
-                'U': 'U     : user-defined distribution (placeholder)'
-            }
+                'M': 'M     : MRN distribution'
+                }
             lines.append(distribution_map[self._grain_distribution])
             
             lines.extend([
@@ -581,6 +584,38 @@ class InputModel(object):
         print("-" * 50)
         return content
         
+    def run_mappings(self, input_file=None):
+        """
+        Run the MAPPINGS V executable on the given input .mv file.
+
+        Parameters:
+        - input_file (str): Path to the input .mv file. If None, will use default from ~/mappings520/lab/{model_name}.mv
+        """
+        lab_dir = os.path.expanduser("~/mappings520/lab/")
+        exe_path = os.path.join(lab_dir, "map52")
+        
+        if not os.path.isfile(exe_path):
+            raise FileNotFoundError(f"MAPPINGS executable not found: {exe_path}")
+
+        # If no input file specified, use default in lab_dir
+        if input_file is None:
+            input_file = os.path.join(lab_dir, f"{self.model_name}.mv")
+        
+        if not os.path.isfile(input_file):
+            raise FileNotFoundError(f"Input file not found: {input_file}")
+            
+        # Run MAPPINGS with input redirection
+        try:
+            result = subprocess.run(
+                [exe_path],
+                input=open(input_file, 'r').read(),
+                text=True,
+                cwd=lab_dir,
+                capture_output=True
+            )
+        except Exception as e:
+            raise RuntimeError(f"Error running MAPPINGS: {e}")
+
 class MappingsModel(object):
     """
     Read MAPPINGS outputs into a MappingsModel object.
