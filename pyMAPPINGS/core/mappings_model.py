@@ -1,32 +1,45 @@
 #import pyMAPPINGS as pymap
-import numpy as np
-import glob
+#import numpy as np
+#import glob
 import os
 import subprocess
-import random
+#import random
 import time
-import re
+#import re
 
 class InputModel(object):
-    """
-    Object used to create and write input file for MAPPINGS.
+    """Object used to create and write input files for MAPPINGS V photoionization models.
+    
+    The InputModel class provides a comprehensive interface for configuring and generating
+    MAPPINGS V input files. It handles all model parameters including abundance files,
+    depletion patterns, dust properties, stellar spectra, and physical conditions.
+    
+    Attributes:
+        model_name (str): Name used for input and output files.
+        calling (str): Identifier for the calling class.
     """
     def __init__(self, model_name = None):
-        """
-        Initiallize InputModel instance.
+        """Initialize InputModel instance.
         
-        Parameters:
-        - model_name (str): Used to name the input and output files of MAPPINGS.
+        Args:
+            model_name (str, optional): Used to name the input and output files of MAPPINGS.
+                Must be a non-empty string.
+                
+        Raises:
+            ValueError: If model_name is None or empty.
+            TypeError: If model_name is not a string.
         """
-        #self.log_ = pymap.log_
         self.calling = 'InputModel'
         self.model_name = model_name
         self._validate_model_name()
         self.init_params()
         
     def _validate_model_name(self):
-        """
-        Validate the model name.
+        """Validate the model name.
+        
+        Raises:
+            ValueError: If model_name is None or empty string.
+            TypeError: If model_name is not a string.
         """
         if self.model_name is None:
             raise ValueError("model_name is required!")
@@ -36,8 +49,10 @@ class InputModel(object):
             raise ValueError("model_name cannot be empty!")
         
     def init_params(self):
-        """
-        Initialize model parameters with default values.
+        """Initialize model parameters with default values.
+        
+        Sets up default values for all MAPPINGS V model parameters including:
+        physical conditions, dust properties, file paths, and numerical settings.
         """
         self._abund = None
         self._depl = None
@@ -64,48 +79,76 @@ class InputModel(object):
     def set_abund(self, path=None):
         """
         Set abundance file path.
+        """"""Set abundance file path.
+        
+        Args:
+            path (str, optional): Path to abundance file. If None, uses MAPPINGS default.
+                File must exist if specified.
+            
+        Raises:
+            FileNotFoundError: If specified file does not exist.
         """
         if path is not None and not os.path.exists(path):
             raise FileNotFoundError(f"Abundance file not found: {path}")
         self._abund = path
-        return self
         
     def get_abund(self):
-        """
-        Get current abundance file path.
+        """Get current abundance file path.
+        
+        Returns:
+            str or None: Current abundance file path, or None if using default.
         """
         return self._abund
         
     def set_depl(self, path=None):
-        """
-        Set depletion file path.
+        """Set depletion file path.
+        
+        Args:
+            path (str, optional): Path to depletion file. If None, uses MAPPINGS default.
+                File must exist if specified.
+            
+        Raises:
+            FileNotFoundError: If specified file does not exist.
         """
         if path is not None and not os.path.exists(path):
             raise FileNotFoundError(f"Depletion file not found: {path}")
         self._depl = path
-        return self
         
     def get_depl(self):
-        """
-        Get current depletion file path.
+        """Get current depletion file path.
+        
+        Returns:
+            str or None: Current depletion file path, or None if using default.
         """
         return self._depl
         
     def set_dust(self, include_dust=True, depl_path=None, pah_fraction=None, pah_switch_value=None, 
                  eval_dust_temp=None, graphite_cospatial=None, allow_grain_destruction=None, 
                  grain_distribution=None):
-        """
-        Configure dust settings.
+        """Configure dust settings.
         
-        Parameters:
-        - include_dust (bool): Whether to include dust (default: True)
-        - depl_path (str): Path to dust depletion file (required if include_dust=True)
-        - pah_fraction (float): Fraction of Carbon Dust Depletion in PAHs (default: 0.3)
-        - pah_switch_value (str): PAH switch on value (default: "4e2")
-        - eval_dust_temp (bool): Evaluate dust temperatures and IR flux (default: False)
-        - graphite_cospatial (bool): Graphite grains cospatial with PAHs (default: False)
-        - allow_grain_destruction (bool): Allow grain destruction (default: False)
-        - grain_distribution (str): Grain size distribution - 'M' for MRN, 'K' for KMH, 'W' for WD, 'U' for user-defined (default: 'M')
+        Comprehensive method to configure all dust-related parameters in one call.
+        
+        Args:
+            include_dust (bool, optional): Whether to include dust. Defaults to True.
+            depl_path (str, optional): Path to dust depletion file. Required if include_dust=True
+                and no previous dust depletion path has been set.
+            pah_fraction (float, optional): Fraction of Carbon Dust Depletion in PAHs. 
+                Must be between 0 and 1. Defaults to 0.3.
+            pah_switch_value (str, optional): PAH switch on value. Defaults to "4e2".
+            eval_dust_temp (bool, optional): Evaluate dust temperatures and IR flux. 
+                Defaults to False.
+            graphite_cospatial (bool, optional): Graphite grains cospatial with PAHs. 
+                Defaults to False.
+            allow_grain_destruction (bool, optional): Allow grain destruction. Defaults to False.
+            grain_distribution (str, optional): Grain size distribution - 'M' for MRN, 
+                'P' for Power law N(a) = k a^alpha, 'S' for Grain Shattering Profile. Defaults to 'M'.
+            
+        Raises:
+            ValueError: If include_dust=True but no depletion path is provided, or if
+                PAH fraction is not between 0 and 1, or if grain_distribution is invalid.
+            FileNotFoundError: If dust depletion file does not exist.
+            TypeError: If boolean parameters are not boolean type.
         """
         self._include_dust = include_dust
         
@@ -141,27 +184,35 @@ class InputModel(object):
             self._allow_grain_destruction = allow_grain_destruction
             
         if grain_distribution is not None:
-            valid_distributions = {'M', 'K', 'W', 'U'}
+            valid_distributions = {'M', 'P', 'S'}
             if not isinstance(grain_distribution, str) or grain_distribution.upper() not in valid_distributions:
-                raise ValueError(f"grain_distribution must be one of {valid_distributions} (M=MRN, K=KMH, W=WD, U=user-defined)")
+                raise ValueError(f"grain_distribution must be one of {valid_distributions} (M=MRN, P=Powerlaw, S=Grain Shattering Profile)")
             self._grain_distribution = grain_distribution.upper()
-            
-        return self
     
     def enable_dust(self, depl_path, pah_fraction=0.3, pah_switch_value="4e2", 
                     eval_dust_temp=False, graphite_cospatial=False, allow_grain_destruction=False,
                     grain_distribution="M"):
-        """
-        Enable dust with specified depletion file.
+        """Enable dust with specified depletion file and optional parameters.
         
-        Parameters:
-        - depl_path (str): Path to dust depletion file
-        - pah_fraction (float): Fraction of Carbon Dust Depletion in PAHs (default: 0.3)
-        - pah_switch_value (str): PAH switch on value (default: "4e2")
-        - eval_dust_temp (bool): Evaluate dust temperatures and IR flux (default: False)
-        - graphite_cospatial (bool): Graphite grains cospatial with PAHs (default: False)
-        - allow_grain_destruction (bool): Allow grain destruction (default: False)
-        - grain_distribution (str): Grain size distribution - 'M' for MRN, 'K' for KMH, 'W' for WD, 'U' for user-defined (default: 'M')
+        Convenience method that calls set_dust with include_dust=True.
+        
+        Args:
+            depl_path (str): Path to dust depletion file. Must exist.
+            pah_fraction (float, optional): Fraction of Carbon Dust Depletion in PAHs. 
+                Defaults to 0.3.
+            pah_switch_value (str, optional): PAH switch on value. Defaults to "4e2".
+            eval_dust_temp (bool, optional): Evaluate dust temperatures and IR flux. 
+                Defaults to False.
+            graphite_cospatial (bool, optional): Graphite grains cospatial with PAHs. 
+                Defaults to False.
+            allow_grain_destruction (bool, optional): Allow grain destruction. Defaults to False.
+            grain_distribution (str, optional): Grain size distribution - 'M' for MRN, 
+                'P' for Power law N(a) = k a^alpha, 'S' for Grain Shattering Profile. Defaults to 'M'.
+            
+        Raises:
+            ValueError: If PAH fraction invalid or grain distribution invalid.
+            FileNotFoundError: If dust depletion file does not exist.
+            TypeError: If boolean parameters are not boolean type.
         """
         return self.set_dust(True, depl_path, pah_fraction, pah_switch_value, 
                            eval_dust_temp, graphite_cospatial, allow_grain_destruction, 
@@ -172,32 +223,45 @@ class InputModel(object):
         return self.set_dust(False)
     
     def set_grain_destruction(self, allow=False):
-        """
-        Set grain destruction option.
+        """Set grain destruction option.
         
-        Parameters:
-        - allow (bool): Whether to allow grain destruction (default: False)
+        Args:
+            allow (bool, optional): Whether to allow grain destruction. Defaults to False.
+            
+        Raises:
+            TypeError: If allow is not a boolean.
         """
         if not isinstance(allow, bool):
             raise TypeError("allow_grain_destruction must be a boolean")
         self._allow_grain_destruction = allow
-        return self
     
     def set_grain_distribution(self, distribution="M"):
-        """
-        Set grain size distribution.
+        """Set grain size distribution.
         
-        Parameters:
-        - distribution (str): 'M' for MRN, 'K' for KMH, 'W' for WD, 'U' for user-defined (default: 'M')
+        Args:
+            distribution (str, optional): Grain size distribution type. Options are:
+                'M' for MRN (Mathis, Rumpl & Nordsieck)
+                'P' for Power law N(a) = k a^alpha
+                'S' for Grain Shattering Profile
+                Defaults to 'M'.
+            
+        Raises:
+            ValueError: If distribution is not one of the valid options.
         """
-        valid_distributions = {'M', 'K', 'W', 'U'}
+        valid_distributions = {'M', 'P', 'S'}
         if not isinstance(distribution, str) or distribution.upper() not in valid_distributions:
-            raise ValueError(f"grain_distribution must be one of {valid_distributions} (M=MRN, K=KMH, W=WD, U=user-defined)")
+            raise ValueError(f"grain_distribution must be one of {valid_distributions} (M=MRN, P=Powerlaw, S=Grain Shattering Profile)")
         self._grain_distribution = distribution.upper()
-        return self
     
     def get_dust_settings(self):
-        """Get current dust configuration."""
+        """Get current dust configuration as a dictionary.
+        
+        Returns:
+            dict: Dictionary containing all current dust settings with keys:
+                'include_dust', 'depl_path', 'pah_fraction', 'pah_switch_value',
+                'eval_dust_temp', 'graphite_cospatial', 'allow_grain_destruction',
+                'grain_distribution'.
+        """
         return {
             'include_dust': self._include_dust,
             'depl_path': self._dust_depl_path,
@@ -210,26 +274,39 @@ class InputModel(object):
         }
 
     def set_spec(self, path=None):
-        """
-        Set spectrum file path.
+        """Set spectrum file path.
+        
+        Args:
+            path (str, optional): Path to spectrum file. If None, uses MAPPINGS default.
+                File must exist if specified.
+            
+        Raises:
+            FileNotFoundError: If specified file does not exist.
         """
         if path is not None and not os.path.exists(path):
             raise FileNotFoundError(f"Spectrum file not found: {path}")
         self._spec = path
-        return self
         
     def get_spec(self):
-        """
-        Get current spectrum file path.
+        """Get current spectrum file path.
+        
+        Returns:
+            str or None: Current spectrum file path, or None if using default.
         """
         return self._spec
 
     def set_age(self, index=None):
-        """
-        Set age index.
+        """Set age index for stellar population.
         
-        Parameters:
-        - index (int): Age index (default: 9)
+        The age in Myr is calculated as (index-1) * 0.5 Myr.
+        
+        Args:
+            index (int, optional): Age index. Must be non-negative integer. 
+                Defaults to 9 (corresponding to 4.0 Myr).
+            
+        Raises:
+            TypeError: If index is not an integer.
+            ValueError: If index is negative.
         """
         if index is not None:
             if not isinstance(index, int):
@@ -237,20 +314,26 @@ class InputModel(object):
             if index < 0:
                 raise ValueError("Age index must be non-negative")
         self._age_index = index if index is not None else 9
-        return self
         
     def get_age(self):
-        """
-        Get current age index.
+        """Get current age index.
+        
+        Returns:
+            int: Current age index.
         """
         return self._age_index
 
     def set_geometry(self, geo=None):
-        """
-        Set geometry.
+        """Set model geometry.
         
-        Parameters:
-        - geo (str): 'S' for spherical, 'P' for plane-parallel (default: 'S')
+        Args:
+            geo (str, optional): Geometry type. Options are:
+                'S' for spherical geometry
+                'P' for plane-parallel geometry
+                Defaults to 'S'.
+            
+        Raises:
+            ValueError: If geometry is not 'S' or 'P'.
         """
         if geo is None:
             self._geometry = "S"
@@ -258,79 +341,118 @@ class InputModel(object):
             self._geometry = geo.upper()
         else:
             raise ValueError("Geometry must be 'S' (spherical) or 'P' (plane-parallel)")
-        return self
         
     def get_geometry(self):
-        """
-        Get current geometry.
+        """Get current geometry setting.
+        
+        Returns:
+            str: Current geometry ('S' or 'P').
         """
         return self._geometry
             
     def set_pressure(self, logp=None):
+        """Set log pressure (p/k).
+        
+        Args:
+            logp (float, optional): Log pressure in units of p/k. Defaults to 6.00.
+        """
         self._pressure = f"{logp:.2f}" if logp is not None else "6.00"
 
-    def set_temperature(self, logTe=None):
-        """
-        Set starting electron temperature.
-        Electron temperature is a free parameter, not an input parameter for the model.
+    def get_pressure(self):
+        """Get current log pressure as float.
         
-        Parameters:
-        - logTe (float): Log electron temperature (default: 4.00)
+        Returns:
+            float: Current log pressure.
+        """
+        return float(self._pressure)
+
+    def set_temperature(self, logTe=None):
+        """Set starting electron temperature.
+        
+        Note:
+            Electron temperature is a free parameter, not a fixed input parameter 
+            for the model. This sets the initial guess value.
+        
+        Args:
+            logTe (float, optional): Log electron temperature in K. Defaults to 4.00.
+            
+        Raises:
+            TypeError: If logTe is not a number.
         """
         if logTe is not None:
             if not isinstance(logTe, (int, float)):
                 raise TypeError("Temperature must be a number")
         self._temperature = f"{logTe:.2f}" if logTe is not None else "4.00"
-        return self
         
     def get_temperature(self):
-        """
-        Get starting electron temperature as float.
+        """Get starting electron temperature as float.
+        
+        Returns:
+            float: Starting electron temperature (log K).
         """
         return float(self._temperature)
 
     def set_filling_factor(self, ff=None):
-        """
-        Set filling factor.
+        """Set filling factor.
         
-        Parameter(s):
-        - ff (float): Single value (default: 1.0)
+        Args:
+            ff (float, optional): Filling factor, must be between 0 and 1. 
+                Represents the volume fraction filled by ionized gas. Defaults to 1.0.
+            
+        Raises:
+            TypeError: If ff is not a number.
         """
         if ff is not None:
             if not isinstance(ff, (int, float)):
                 raise TypeError("Filling factor must be a number")
         self._filling_factor = f"{ff:.2f}" if ff is not None else "1.0"
-        return self
             
     def get_filling_factor(self):
-        """
-        Get current filling factor.
+        """Get current filling factor.
+        
+        Returns:
+            str: Current filling factor as string.
         """
         return self._filling_factor
 
     def set_ionization_param(self, logq=None):
-        """
-        Set log ionization parameter.
+        """Set log ionization parameter.
         
-        Parameters:
-        - logq (float): Log ionization parameter (default: 8.00)
+        The ionization parameter is defined as the ratio of ionizing photon 
+        density to hydrogen density.
+        
+        Args:
+            logq (float, optional): Log ionization parameter. Defaults to 8.00.
+            
+        Returns:
+            InputModel: Returns self for method chaining.
+            
+        Raises:
+            TypeError: If logq is not a number.
         """
         if logq is not None:
             if not isinstance(logq, (int, float)):
                 raise TypeError("Ionization parameter must be a number")
         self._logq = f"{logq:.2f}" if logq is not None else "8.00"
-        return self
         
     def get_ionization_param(self):
-        """Get current ionization parameter as float."""
+        """Get current ionization parameter as float.
+        
+        Returns:
+            float: Current log ionization parameter.
+        """
         return float(self._logq)
 
     def set_step_size(self, step=None):
-        """
-        Set step size.
+        """Set step size for photon absorption fraction.
         
-        Parameters:
-        - step (float): Step size (default: 0.02)
+        Args:
+            step (float, optional): Step value of the photon absorption fraction.
+                Must be positive. Defaults to 0.02.
+            
+        Raises:
+            TypeError: If step is not a number.
+            ValueError: If step is not positive.
         """
         if step is not None:
             if not isinstance(step, (int, float)):
@@ -338,45 +460,63 @@ class InputModel(object):
             if step <= 0:
                 raise ValueError("Step size must be positive")
         self._step_size = f"{step:.4f}" if step is not None else "0.02"
-        return self
     
-    def set_luminosity(self, logL=None):
-        """
-        Set log luminosity.
+    def get_step_size(self):
+        """Get current step size as float.
         
-        Parameters:
-        - logL (float): Log luminosity (default: 40.00)
+        Returns:
+            float: Current step size.
+        """
+        return float(self._step_size)
+
+    def set_luminosity(self, logL=None):
+        """Set log bolometric luminosity.
+        
+        Args:
+            logL (float, optional): Log bolometric source luminosity in erg/s. 
+                Defaults to 40.00.
+
+        Raises:
+            TypeError: If logL is not a number.
         """
         if logL is not None:
             if not isinstance(logL, (int, float)):
                 raise TypeError("Luminosity must be a number")
         self._luminosity = f"{logL:.2f}" if logL is not None else "40.00"
-        return self
         
     def get_luminosity(self):
-        """
-        Get current luminosity as float.
+        """Get current luminosity as float.
+        
+        Returns:
+            float: Current log luminosity in erg/s.
         """
         return float(self._luminosity)
 
     def set_output(self, path=None):
-        """
-        Set output path.
+        """Set output path for model results.
+        
+        Args:
+            path (str, optional): Output directory path. Directory will be created
+                if it doesn't exist.
         """
         if path is not None:
             # Create directory if it doesn't exist
             os.makedirs(os.path.dirname(path), exist_ok=True)
         self._output_path = path
-        return self
         
     def get_output(self):
-        """
-        Get current output path.
+        """Get current output path.
+        
+        Returns:
+            str or None: Current output path, or None if not set.
         """
         return self._output_path
         
     def summary(self):
-        """Print a summary of current parameter settings."""
+        """Print a summary of current parameter settings.
+        
+        Displays all current model parameters in a formatted table for easy review.
+        """
         print(f"MAPPINGS Model: {self.model_name}")
         print(f"  Age index: {self._age_index}")
         print(f"  Geometry: {self._geometry}")
@@ -401,7 +541,14 @@ class InputModel(object):
         print(f"  Output path: {self._output_path}")
         
     def validate_params(self):
-        """Validate all current parameters."""
+        """Validate all current parameters for consistency and file existence.
+        
+        Returns:
+            bool: True if all parameters are valid.
+            
+        Raises:
+            ValueError: If any parameter validation fails, with details of all errors.
+        """
         errors = []
         
         # Check required files exist if specified
@@ -417,23 +564,43 @@ class InputModel(object):
         return True
     
     def __repr__(self):
-        """String representation of the InputModel."""
+        """String representation of the InputModel.
+        
+        Returns:
+            str: Formal string representation suitable for debugging.
+        """
         return f"InputModel(model_name='{self.model_name}')"
     
     def __str__(self):
-        """User-friendly string representation."""
+        """User-friendly string representation.
+        
+        Returns:
+            str: Human-readable description of the model.
+        """
         return f"MAPPINGS InputModel: {self.model_name}"
     
     def write_input_file(self, filename=None, id_string=None):
-        """
-        Generate and write the MAPPINGS input file as .mv.
+        """Generate and write the MAPPINGS input file as .mv format.
         
-        Parameters:
-        - filename (str): Output filename (default: {model_name}.mv)
-        - id_string (str): Custom ID string for the model (default: auto-generated)
+        Creates a complete MAPPINGS V input file based on current parameter settings
+        and writes it to the specified location.
         
+        Args:
+            filename (str, optional): Output filename. Defaults to {model_name}.mv.
+            id_string (str, optional): Custom ID string for the model. If None,
+                auto-generates based on model parameters.
+                
         Returns:
-        - str: Path to the created input file
+            str: Path to the created input file.
+            
+        Raises:
+            IOError: If file cannot be written.
+            
+        Example:
+            >>> model = InputModel("test_model")
+            >>> model.set_pressure(6.5)
+            >>> filepath = model.write_input_file()
+            Input file written to: ~/mappings520/lab/test_model.mv
         """
         # Define the base directory for saving .mv files
         base_dir = os.path.expanduser("~/mappings520/lab/")
@@ -462,7 +629,11 @@ class InputModel(object):
             raise IOError(f"Failed to write input file: {e}")
     
     def _generate_id_string(self):
-        """Generate a default ID string based on model parameters."""
+        """Generate a default ID string based on model parameters.
+        
+        Returns:
+            str: Auto-generated ID string incorporating key model parameters.
+        """
         # Extract key parameters for ID
         geo = "SPH" if self._geometry == "S" else "PP"
         age_str = f"t{self._age_index}"
@@ -472,7 +643,14 @@ class InputModel(object):
         return f"{geo}_{self.model_name}_{logq_str}_{pressure_str}_{age_str}"
     
     def _build_input_content(self, id_string):
-        """Build the complete input file content."""
+        """Build the complete input file content.
+        
+        Args:
+            id_string (str): ID string to include in the input file.
+            
+        Returns:
+            str: Complete input file content formatted for MAPPINGS V.
+        """
         lines = []
         
         # Abundance section
@@ -565,14 +743,16 @@ class InputModel(object):
         return '\n'.join(lines) + '\n'
     
     def preview_input_file(self, id_string=None):
-        """
-        Preview the input file content without writing to disk.
+        """Preview the input file content without writing to disk.
         
-        Parameters:
-        - id_string (str): Custom ID string for the model (default: auto-generated)
+        Useful for checking the generated input file content before committing to disk.
         
+        Args:
+            id_string (str, optional): Custom ID string for the model. If None,
+                auto-generates based on model parameters.
+                
         Returns:
-        - str: The input file content
+            str: The input file content that would be written.
         """
         if id_string is None:
             id_string = self._generate_id_string()
@@ -585,11 +765,22 @@ class InputModel(object):
         return content
         
     def run_mappings(self, input_file=None):
-        """
-        Run the MAPPINGS V executable on the given input .mv file.
+        """Run the MAPPINGS V executable on the given input .mv file.
 
-        Parameters:
-        - input_file (str): Path to the input .mv file. If None, will use default from ~/mappings520/lab/{model_name}.mv
+        Executes the MAPPINGS V photoionization code using the current model
+        configuration. Requires that MAPPINGS V is properly installed.
+
+        Args:
+            input_file (str, optional): Path to the input .mv file. If None, 
+                uses default path ~/mappings520/lab/{model_name}.mv
+                
+        Raises:
+            FileNotFoundError: If MAPPINGS executable or input file not found.
+            RuntimeError: If MAPPINGS execution fails.
+            
+        Note:
+            This method requires MAPPINGS V to be installed in ~/mappings520/lab/
+            with the executable named 'map52'.
         """
         lab_dir = os.path.expanduser("~/mappings520/lab/")
         exe_path = os.path.join(lab_dir, "map52")
@@ -604,8 +795,10 @@ class InputModel(object):
         if not os.path.isfile(input_file):
             raise FileNotFoundError(f"Input file not found: {input_file}")
             
-        # Run MAPPINGS with input redirection
+        # Run MAPPINGS
         try:
+            start_time = time.time()
+            print(f"Running MAPPINGS model '{self.model_name}'...")
             result = subprocess.run(
                 [exe_path],
                 input=open(input_file, 'r').read(),
@@ -613,8 +806,16 @@ class InputModel(object):
                 cwd=lab_dir,
                 capture_output=True
             )
+            
+            end_time = time.time()
+            elapsed = end_time - start_time
+            minutes, seconds = divmod(elapsed, 60)
+
+            print(f"MAPPINGS model '{self.model_name}' successfully run in {int(minutes)}m {seconds:.2f}s")
+
         except Exception as e:
             raise RuntimeError(f"Error running MAPPINGS: {e}")
+
 
 class MappingsModel(object):
     """
