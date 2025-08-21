@@ -1,3 +1,13 @@
-Code reference
-================
+.. _api-reference:
+
+API Reference
+=============
+
+.. toctree::
+   :maxdepth: 2
+
+   api/pyMAPPINGS
+
+
+
 

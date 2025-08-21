@@ -37,6 +37,7 @@ This will compile the MAPPINGS executable (``map52``) in the
 ``lab/`` directory.
 
 .. note::
+   - You will need a working Fortran compiler (e.g., ``gfortran``) installed on your system.
    - MAPPINGS is installed by default into the users home area ~/mappings520
 
 Test the MAPPINGS V Build
@@ -49,9 +50,6 @@ To confirm that MAPPINGS has built correctly, run:
     ./map52
 
 If the build was successful, you should see the MAPPINGS interactive prompt.
-
-.. note::
-   - You will need a working Fortran compiler (e.g., ``gfortran``) installed on your system.
 
 Installing pyMAPPINGS
 ---------------------

@@ -4,7 +4,6 @@ pyMAPPINGS.core.__init__ file
 from .mappings_model import (
     MappingsModel,
     InputModel,
-    write_input_file,
     run_MAPPINGS,
     load_models,
 )

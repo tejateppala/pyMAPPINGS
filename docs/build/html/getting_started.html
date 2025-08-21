@@ -47,14 +47,14 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#downloading-and-installing-mappings-v">Downloading and Installing MAPPINGS V</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-the-source-code">Download the Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-the-executable">Build the Executable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test-the-build">Test the Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-the-mappings-v-executable">Build the MAPPINGS V Executable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-the-mappings-v-build">Test the MAPPINGS V Build</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-pymappings">Installing pyMAPPINGS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">Code reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a></li>
 </ul>
 
         </div>
@@ -100,8 +100,8 @@
 </pre></div>
 </div>
 </section>
-<section id="build-the-executable">
-<h2>Build the Executable<a class="headerlink" href="#build-the-executable" title="Link to this heading"></a></h2>
+<section id="build-the-mappings-v-executable">
+<h2>Build the MAPPINGS V Executable<a class="headerlink" href="#build-the-mappings-v-executable" title="Link to this heading"></a></h2>
 <p>Navigate into the extracted folder and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>mappings_V-521
 make<span class="w"> </span>build
@@ -109,25 +109,26 @@ make<span class="w"> </span>build
 </div>
 <p>This will compile the MAPPINGS executable (<code class="docutils literal notranslate"><span class="pre">map52</span></code>) in the
 <code class="docutils literal notranslate"><span class="pre">lab/</span></code> directory.</p>
-</section>
-<section id="test-the-build">
-<h2>Test the Build<a class="headerlink" href="#test-the-build" title="Link to this heading"></a></h2>
-<p>To confirm that MAPPINGS has built correctly, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/mappings_V-521/lab
-./map52
-</pre></div>
-</div>
-<p>If the build was successful, you should see the MAPPINGS interactive prompt.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>You will need a working Fortran compiler (e.g., <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>) installed on your system.</p></li>
+<li><p>MAPPINGS is installed by default into the users home area ~/mappings520</p></li>
 </ul>
 </div>
 </section>
+<section id="test-the-mappings-v-build">
+<h2>Test the MAPPINGS V Build<a class="headerlink" href="#test-the-mappings-v-build" title="Link to this heading"></a></h2>
+<p>To confirm that MAPPINGS has built correctly, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/mappings520/lab
+./map52
+</pre></div>
+</div>
+<p>If the build was successful, you should see the MAPPINGS interactive prompt.</p>
+</section>
 <section id="installing-pymappings">
 <h2>Installing pyMAPPINGS<a class="headerlink" href="#installing-pymappings" title="Link to this heading"></a></h2>
-<p>You can install <strong>pyMAPPINGS</strong> using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<p>You can now install <strong>pyMAPPINGS</strong> using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pymappings
 </pre></div>
 </div>

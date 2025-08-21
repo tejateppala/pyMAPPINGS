@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.py
+pyMAPPINGS/__init__.py
+pyMAPPINGS/version.py
+pyMAPPINGS.egg-info/PKG-INFO
+pyMAPPINGS.egg-info/SOURCES.txt
+pyMAPPINGS.egg-info/dependency_links.txt
+pyMAPPINGS.egg-info/top_level.txt
+pyMAPPINGS/analysis/__init__.py
+pyMAPPINGS/core/__init__.py
+pyMAPPINGS/core/mappings_model.py
+pyMAPPINGS/utils/__init__.py
+pyMAPPINGS/utils/config.py
+pyMAPPINGS/utils/env.py

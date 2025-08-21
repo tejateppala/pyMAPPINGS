@@ -1,0 +1,1057 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyMAPPINGS.core.mappings_model &mdash; pyMAPPINGS 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyMAPPINGS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyMAPPINGS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyMAPPINGS.core.mappings_model</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyMAPPINGS.core.mappings_model</h1><div class="highlight"><pre>
+<span></span><span class="c1">#import pyMAPPINGS as pymap</span>
+<span class="c1">#import numpy as np</span>
+<span class="c1">#import glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="c1">#import random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="c1">#import re</span>
+
+<div class="viewcode-block" id="InputModel">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel">[docs]</a>
+<span class="k">class</span> <span class="nc">InputModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Object used to create and write input files for MAPPINGS V photoionization models.</span>
+<span class="sd">    </span>
+<span class="sd">    The InputModel class provides a comprehensive interface for configuring and generating</span>
+<span class="sd">    MAPPINGS V input files. It handles all model parameters including abundance files,</span>
+<span class="sd">    depletion patterns, dust properties, stellar spectra, and physical conditions.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        model_name (str): Name used for input and output files.</span>
+<span class="sd">        calling (str): Identifier for the calling class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize InputModel instance.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            model_name (str, optional): Used to name the input and output files of MAPPINGS.</span>
+<span class="sd">                Must be a non-empty string.</span>
+<span class="sd">                </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If model_name is None or empty.</span>
+<span class="sd">            TypeError: If model_name is not a string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calling</span> <span class="o">=</span> <span class="s1">&#39;InputModel&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_model_name</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_params</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">_validate_model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate the model name.</span>
+<span class="sd">        </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If model_name is None or empty string.</span>
+<span class="sd">            TypeError: If model_name is not a string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;model_name is required!&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;model_name must be a string!&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;model_name cannot be empty!&quot;</span><span class="p">)</span>
+        
+<div class="viewcode-block" id="InputModel.init_params">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.init_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize model parameters with default values.</span>
+<span class="sd">        </span>
+<span class="sd">        Sets up default values for all MAPPINGS V model parameters including:</span>
+<span class="sd">        physical conditions, dust properties, file paths, and numerical settings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_abund</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_depl</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_age_index</span> <span class="o">=</span> <span class="mi">9</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span> <span class="o">=</span> <span class="s2">&quot;S&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pressure</span> <span class="o">=</span> <span class="s2">&quot;6.00&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span> <span class="o">=</span> <span class="s2">&quot;4.00&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filling_factor</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logq</span> <span class="o">=</span> <span class="s2">&quot;8.00&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step_size</span> <span class="o">=</span> <span class="s2">&quot;0.0200&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_luminosity</span> <span class="o">=</span> <span class="s2">&quot;40.00&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Dust parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dust_depl_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pah_fraction</span> <span class="o">=</span> <span class="mf">0.3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pah_switch_value</span> <span class="o">=</span> <span class="s2">&quot;4e2&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eval_dust_temp</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_graphite_cospatial</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allow_grain_destruction</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grain_distribution</span> <span class="o">=</span> <span class="s2">&quot;M&quot;</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_abund">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_abund">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_abund</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set abundance file path.</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="s2">&quot;&quot;&quot;Set abundance file path.</span>
+<span class="s2">        </span>
+<span class="s2">        Args:</span>
+<span class="s2">            path (str, optional): Path to abundance file. If None, uses MAPPINGS default.</span>
+<span class="s2">                File must exist if specified.</span>
+<span class="s2">            </span>
+<span class="s2">        Raises:</span>
+<span class="s2">            FileNotFoundError: If specified file does not exist.</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Abundance file not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_abund</span> <span class="o">=</span> <span class="n">path</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_abund">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_abund">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_abund</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current abundance file path.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str or None: Current abundance file path, or None if using default.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_abund</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.set_depl">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_depl">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_depl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set depletion file path.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            path (str, optional): Path to depletion file. If None, uses MAPPINGS default.</span>
+<span class="sd">                File must exist if specified.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If specified file does not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Depletion file not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_depl</span> <span class="o">=</span> <span class="n">path</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_depl">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_depl">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_depl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current depletion file path.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str or None: Current depletion file path, or None if using default.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depl</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.set_dust">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_dust">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_dust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_dust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depl_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pah_fraction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pah_switch_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">eval_dust_temp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graphite_cospatial</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_grain_destruction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">grain_distribution</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configure dust settings.</span>
+<span class="sd">        </span>
+<span class="sd">        Comprehensive method to configure all dust-related parameters in one call.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            include_dust (bool, optional): Whether to include dust. Defaults to True.</span>
+<span class="sd">            depl_path (str, optional): Path to dust depletion file. Required if include_dust=True</span>
+<span class="sd">                and no previous dust depletion path has been set.</span>
+<span class="sd">            pah_fraction (float, optional): Fraction of Carbon Dust Depletion in PAHs. </span>
+<span class="sd">                Must be between 0 and 1. Defaults to 0.3.</span>
+<span class="sd">            pah_switch_value (str, optional): PAH switch on value. Defaults to &quot;4e2&quot;.</span>
+<span class="sd">            eval_dust_temp (bool, optional): Evaluate dust temperatures and IR flux. </span>
+<span class="sd">                Defaults to False.</span>
+<span class="sd">            graphite_cospatial (bool, optional): Graphite grains cospatial with PAHs. </span>
+<span class="sd">                Defaults to False.</span>
+<span class="sd">            allow_grain_destruction (bool, optional): Allow grain destruction. Defaults to False.</span>
+<span class="sd">            grain_distribution (str, optional): Grain size distribution - &#39;M&#39; for MRN, </span>
+<span class="sd">                &#39;P&#39; for Power law N(a) = k a^alpha, &#39;S&#39; for Grain Shattering Profile. Defaults to &#39;M&#39;.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If include_dust=True but no depletion path is provided, or if</span>
+<span class="sd">                PAH fraction is not between 0 and 1, or if grain_distribution is invalid.</span>
+<span class="sd">            FileNotFoundError: If dust depletion file does not exist.</span>
+<span class="sd">            TypeError: If boolean parameters are not boolean type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span> <span class="o">=</span> <span class="n">include_dust</span>
+        
+        <span class="k">if</span> <span class="n">include_dust</span> <span class="ow">and</span> <span class="n">depl_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dust_depl_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Dust depletion file path is required when including dust&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">depl_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">depl_path</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dust depletion file not found: </span><span class="si">{</span><span class="n">depl_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dust_depl_path</span> <span class="o">=</span> <span class="n">depl_path</span>
+            
+        <span class="k">if</span> <span class="n">pah_fraction</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pah_fraction</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">pah_fraction</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;PAH fraction must be a number between 0 and 1&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pah_fraction</span> <span class="o">=</span> <span class="n">pah_fraction</span>
+            
+        <span class="k">if</span> <span class="n">pah_switch_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pah_switch_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pah_switch_value</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">eval_dust_temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eval_dust_temp</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;eval_dust_temp must be a boolean&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_eval_dust_temp</span> <span class="o">=</span> <span class="n">eval_dust_temp</span>
+        
+        <span class="k">if</span> <span class="n">graphite_cospatial</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graphite_cospatial</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;graphite_cospatial must be a boolean&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graphite_cospatial</span> <span class="o">=</span> <span class="n">graphite_cospatial</span>
+        
+        <span class="k">if</span> <span class="n">allow_grain_destruction</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">allow_grain_destruction</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;allow_grain_destruction must be a boolean&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_allow_grain_destruction</span> <span class="o">=</span> <span class="n">allow_grain_destruction</span>
+            
+        <span class="k">if</span> <span class="n">grain_distribution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">valid_distributions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">}</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grain_distribution</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">grain_distribution</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_distributions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;grain_distribution must be one of </span><span class="si">{</span><span class="n">valid_distributions</span><span class="si">}</span><span class="s2"> (M=MRN, P=Powerlaw, S=Grain Shattering Profile)&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grain_distribution</span> <span class="o">=</span> <span class="n">grain_distribution</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></div>
+
+    
+<div class="viewcode-block" id="InputModel.enable_dust">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.enable_dust">[docs]</a>
+    <span class="k">def</span> <span class="nf">enable_dust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depl_path</span><span class="p">,</span> <span class="n">pah_fraction</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">pah_switch_value</span><span class="o">=</span><span class="s2">&quot;4e2&quot;</span><span class="p">,</span> 
+                    <span class="n">eval_dust_temp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">graphite_cospatial</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">allow_grain_destruction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">grain_distribution</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable dust with specified depletion file and optional parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Convenience method that calls set_dust with include_dust=True.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            depl_path (str): Path to dust depletion file. Must exist.</span>
+<span class="sd">            pah_fraction (float, optional): Fraction of Carbon Dust Depletion in PAHs. </span>
+<span class="sd">                Defaults to 0.3.</span>
+<span class="sd">            pah_switch_value (str, optional): PAH switch on value. Defaults to &quot;4e2&quot;.</span>
+<span class="sd">            eval_dust_temp (bool, optional): Evaluate dust temperatures and IR flux. </span>
+<span class="sd">                Defaults to False.</span>
+<span class="sd">            graphite_cospatial (bool, optional): Graphite grains cospatial with PAHs. </span>
+<span class="sd">                Defaults to False.</span>
+<span class="sd">            allow_grain_destruction (bool, optional): Allow grain destruction. Defaults to False.</span>
+<span class="sd">            grain_distribution (str, optional): Grain size distribution - &#39;M&#39; for MRN, </span>
+<span class="sd">                &#39;P&#39; for Power law N(a) = k a^alpha, &#39;S&#39; for Grain Shattering Profile. Defaults to &#39;M&#39;.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If PAH fraction invalid or grain distribution invalid.</span>
+<span class="sd">            FileNotFoundError: If dust depletion file does not exist.</span>
+<span class="sd">            TypeError: If boolean parameters are not boolean type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_dust</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">depl_path</span><span class="p">,</span> <span class="n">pah_fraction</span><span class="p">,</span> <span class="n">pah_switch_value</span><span class="p">,</span> 
+                           <span class="n">eval_dust_temp</span><span class="p">,</span> <span class="n">graphite_cospatial</span><span class="p">,</span> <span class="n">allow_grain_destruction</span><span class="p">,</span> 
+                           <span class="n">grain_distribution</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="InputModel.disable_dust">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.disable_dust">[docs]</a>
+    <span class="k">def</span> <span class="nf">disable_dust</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disable dust inclusion.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_dust</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="InputModel.set_grain_destruction">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_grain_destruction">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_grain_destruction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allow</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set grain destruction option.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            allow (bool, optional): Whether to allow grain destruction. Defaults to False.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If allow is not a boolean.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">allow</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;allow_grain_destruction must be a boolean&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allow_grain_destruction</span> <span class="o">=</span> <span class="n">allow</span></div>
+
+    
+<div class="viewcode-block" id="InputModel.set_grain_distribution">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_grain_distribution">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_grain_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set grain size distribution.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            distribution (str, optional): Grain size distribution type. Options are:</span>
+<span class="sd">                &#39;M&#39; for MRN (Mathis, Rumpl &amp; Nordsieck)</span>
+<span class="sd">                &#39;P&#39; for Power law N(a) = k a^alpha</span>
+<span class="sd">                &#39;S&#39; for Grain Shattering Profile</span>
+<span class="sd">                Defaults to &#39;M&#39;.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If distribution is not one of the valid options.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_distributions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">distribution</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">distribution</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_distributions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;grain_distribution must be one of </span><span class="si">{</span><span class="n">valid_distributions</span><span class="si">}</span><span class="s2"> (M=MRN, P=Powerlaw, S=Grain Shattering Profile)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grain_distribution</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></div>
+
+    
+<div class="viewcode-block" id="InputModel.get_dust_settings">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_dust_settings">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_dust_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current dust configuration as a dictionary.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary containing all current dust settings with keys:</span>
+<span class="sd">                &#39;include_dust&#39;, &#39;depl_path&#39;, &#39;pah_fraction&#39;, &#39;pah_switch_value&#39;,</span>
+<span class="sd">                &#39;eval_dust_temp&#39;, &#39;graphite_cospatial&#39;, &#39;allow_grain_destruction&#39;,</span>
+<span class="sd">                &#39;grain_distribution&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;include_dust&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span><span class="p">,</span>
+            <span class="s1">&#39;depl_path&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dust_depl_path</span><span class="p">,</span>
+            <span class="s1">&#39;pah_fraction&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pah_fraction</span><span class="p">,</span>
+            <span class="s1">&#39;pah_switch_value&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pah_switch_value</span><span class="p">,</span>
+            <span class="s1">&#39;eval_dust_temp&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_dust_temp</span><span class="p">,</span>
+            <span class="s1">&#39;graphite_cospatial&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graphite_cospatial</span><span class="p">,</span>
+            <span class="s1">&#39;allow_grain_destruction&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_grain_destruction</span><span class="p">,</span>
+            <span class="s1">&#39;grain_distribution&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grain_distribution</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_spec">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_spec">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set spectrum file path.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            path (str, optional): Path to spectrum file. If None, uses MAPPINGS default.</span>
+<span class="sd">                File must exist if specified.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If specified file does not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spectrum file not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span> <span class="o">=</span> <span class="n">path</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_spec">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_spec">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current spectrum file path.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str or None: Current spectrum file path, or None if using default.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_age">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_age">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set age index for stellar population.</span>
+<span class="sd">        </span>
+<span class="sd">        The age in Myr is calculated as (index-1) * 0.5 Myr.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            index (int, optional): Age index. Must be non-negative integer. </span>
+<span class="sd">                Defaults to 9 (corresponding to 4.0 Myr).</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If index is not an integer.</span>
+<span class="sd">            ValueError: If index is negative.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Age index must be an integer&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Age index must be non-negative&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_age_index</span> <span class="o">=</span> <span class="n">index</span> <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">9</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_age">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_age">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current age index.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Current age index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_age_index</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_geometry">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_geometry">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geo</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set model geometry.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            geo (str, optional): Geometry type. Options are:</span>
+<span class="sd">                &#39;S&#39; for spherical geometry</span>
+<span class="sd">                &#39;P&#39; for plane-parallel geometry</span>
+<span class="sd">                Defaults to &#39;S&#39;.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If geometry is not &#39;S&#39; or &#39;P&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">geo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span> <span class="o">=</span> <span class="s2">&quot;S&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">geo</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">}:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span> <span class="o">=</span> <span class="n">geo</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Geometry must be &#39;S&#39; (spherical) or &#39;P&#39; (plane-parallel)&quot;</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_geometry">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_geometry">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current geometry setting.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Current geometry (&#39;S&#39; or &#39;P&#39;).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span></div>
+
+            
+<div class="viewcode-block" id="InputModel.set_pressure">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_pressure">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_pressure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set log pressure (p/k).</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            logp (float, optional): Log pressure in units of p/k. Defaults to 6.00.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pressure</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">logp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">logp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;6.00&quot;</span></div>
+
+
+<div class="viewcode-block" id="InputModel.get_pressure">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_pressure">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_pressure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current log pressure as float.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Current log pressure.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pressure</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_temperature">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_temperature">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logTe</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set starting electron temperature.</span>
+<span class="sd">        </span>
+<span class="sd">        Note:</span>
+<span class="sd">            Electron temperature is a free parameter, not a fixed input parameter </span>
+<span class="sd">            for the model. This sets the initial guess value.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            logTe (float, optional): Log electron temperature in K. Defaults to 4.00.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If logTe is not a number.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">logTe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">logTe</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Temperature must be a number&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">logTe</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">logTe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;4.00&quot;</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_temperature">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_temperature">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get starting electron temperature as float.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Starting electron temperature (log K).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_filling_factor">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_filling_factor">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_filling_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set filling factor.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            ff (float, optional): Filling factor, must be between 0 and 1. </span>
+<span class="sd">                Represents the volume fraction filled by ionized gas. Defaults to 1.0.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If ff is not a number.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">ff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Filling factor must be a number&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filling_factor</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ff</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">ff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;1.0&quot;</span></div>
+
+            
+<div class="viewcode-block" id="InputModel.get_filling_factor">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_filling_factor">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_filling_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current filling factor.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Current filling factor as string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filling_factor</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_ionization_param">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_ionization_param">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_ionization_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logq</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set log ionization parameter.</span>
+<span class="sd">        </span>
+<span class="sd">        The ionization parameter is defined as the ratio of ionizing photon </span>
+<span class="sd">        density to hydrogen density.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            logq (float, optional): Log ionization parameter. Defaults to 8.00.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            InputModel: Returns self for method chaining.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If logq is not a number.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">logq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">logq</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Ionization parameter must be a number&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logq</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">logq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">logq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;8.00&quot;</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_ionization_param">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_ionization_param">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_ionization_param</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current ionization parameter as float.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Current log ionization parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logq</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_step_size">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_step_size">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_step_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set step size for photon absorption fraction.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            step (float, optional): Step value of the photon absorption fraction.</span>
+<span class="sd">                Must be positive. Defaults to 0.02.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If step is not a number.</span>
+<span class="sd">            ValueError: If step is not positive.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Step size must be a number&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">step</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Step size must be positive&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step_size</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">step</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;0.02&quot;</span></div>
+
+    
+<div class="viewcode-block" id="InputModel.get_step_size">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_step_size">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_step_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current step size as float.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Current step size.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_step_size</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_luminosity">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_luminosity">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_luminosity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logL</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set log bolometric luminosity.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            logL (float, optional): Log bolometric source luminosity in erg/s. </span>
+<span class="sd">                Defaults to 40.00.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If logL is not a number.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">logL</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">logL</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Luminosity must be a number&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_luminosity</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">logL</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">logL</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;40.00&quot;</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_luminosity">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_luminosity">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_luminosity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current luminosity as float.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Current log luminosity in erg/s.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_luminosity</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InputModel.set_output">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.set_output">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set output path for model results.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            path (str, optional): Output directory path. Directory will be created</span>
+<span class="sd">                if it doesn&#39;t exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Create directory if it doesn&#39;t exist</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_path</span> <span class="o">=</span> <span class="n">path</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.get_output">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.get_output">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get current output path.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str or None: Current output path, or None if not set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_path</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.summary">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.summary">[docs]</a>
+    <span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print a summary of current parameter settings.</span>
+<span class="sd">        </span>
+<span class="sd">        Displays all current model parameters in a formatted table for easy review.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPPINGS Model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Age index: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_age_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Geometry: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Log Pressure: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pressure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Log Temperature: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Filling Factor: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filling_factor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Log Ionization Parameter: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_logq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Step Size: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_step_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Log Luminosity: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_luminosity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Abundance file: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_abund</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Depletion file: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_depl</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Spectrum file: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_spec</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Include dust: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Dust depletion file: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_dust_depl_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Allow grain destruction: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_allow_grain_destruction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Grain distribution: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_grain_distribution</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    PAH fraction: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pah_fraction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    PAH switch value: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pah_switch_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Evaluate dust temperatures: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_eval_dust_temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Graphite grains cospatial: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_graphite_cospatial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Output path: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.validate_params">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.validate_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">validate_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate all current parameters for consistency and file existence.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if all parameters are valid.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If any parameter validation fails, with details of all errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># Check required files exist if specified</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;_abund&#39;</span><span class="p">,</span> <span class="s1">&#39;abundance&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;_depl&#39;</span><span class="p">,</span> <span class="s1">&#39;depletion&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;_spec&#39;</span><span class="p">,</span> <span class="s1">&#39;spectrum&#39;</span><span class="p">)]:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> file not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Add more validation as needed</span>
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Parameter validation failed:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String representation of the InputModel.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Formal string representation suitable for debugging.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;InputModel(model_name=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;User-friendly string representation.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Human-readable description of the model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;MAPPINGS InputModel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+<div class="viewcode-block" id="InputModel.write_input_file">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.write_input_file">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_input_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">id_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate and write the MAPPINGS input file as .mv format.</span>
+<span class="sd">        </span>
+<span class="sd">        Creates a complete MAPPINGS V input file based on current parameter settings</span>
+<span class="sd">        and writes it to the specified location.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            filename (str, optional): Output filename. Defaults to {model_name}.mv.</span>
+<span class="sd">            id_string (str, optional): Custom ID string for the model. If None,</span>
+<span class="sd">                auto-generates based on model parameters.</span>
+<span class="sd">                </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Path to the created input file.</span>
+<span class="sd">            </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If file cannot be written.</span>
+<span class="sd">            </span>
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; model = InputModel(&quot;test_model&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; model.set_pressure(6.5)</span>
+<span class="sd">            &gt;&gt;&gt; filepath = model.write_input_file()</span>
+<span class="sd">            Input file written to: ~/mappings520/lab/test_model.mv</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Define the base directory for saving .mv files</span>
+        <span class="n">base_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/mappings520/lab/&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Set default filename</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">.mv&quot;</span>
+            
+        <span class="c1"># Full path inside ~/mappings520/lab/</span>
+        <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        
+        <span class="c1"># Generate ID string if not provided</span>
+        <span class="k">if</span> <span class="n">id_string</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">id_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_id_string</span><span class="p">()</span>
+        
+        <span class="c1"># Build the input file content</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_input_content</span><span class="p">(</span><span class="n">id_string</span><span class="p">)</span>
+        
+        <span class="c1"># Write to file</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input file written to: </span><span class="si">{</span><span class="n">full_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">full_path</span>
+        <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to write input file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+    
+    <span class="k">def</span> <span class="nf">_generate_id_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a default ID string based on model parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Auto-generated ID string incorporating key model parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Extract key parameters for ID</span>
+        <span class="n">geo</span> <span class="o">=</span> <span class="s2">&quot;SPH&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span> <span class="o">==</span> <span class="s2">&quot;S&quot;</span> <span class="k">else</span> <span class="s2">&quot;PP&quot;</span>
+        <span class="n">age_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;t</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_age_index</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">pressure_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Pk</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pressure</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logq_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Q</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_logq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">geo</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">logq_str</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">pressure_str</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">age_str</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">_build_input_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_string</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the complete input file content.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            id_string (str): ID string to include in the input file.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Complete input file content formatted for MAPPINGS V.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># Abundance section</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_abund</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                <span class="s2">&quot;yes   : change abundance&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_abund</span><span class="p">,</span>
+                <span class="s2">&quot;no    : no more changes&quot;</span>
+            <span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;no    : use default abundance&quot;</span><span class="p">)</span>
+        
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+            <span class="s2">&quot;no    : no offsets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;yes   : include dust&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span> <span class="k">else</span> <span class="s2">&quot;no    : include dust&quot;</span>
+        <span class="p">])</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_dust</span><span class="p">:</span>
+            <span class="c1"># Depletion section</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                    <span class="s2">&quot;yes   : change depletions&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_depl</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;no    : no more changes&quot;</span>
+                <span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                    <span class="s2">&quot;no    : use default depletions&quot;</span>
+                <span class="p">])</span>
+            
+            <span class="c1"># Grain destruction</span>
+            <span class="n">grain_destruction_text</span> <span class="o">=</span> <span class="s2">&quot;yes   : allow grain destruction&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_grain_destruction</span> <span class="k">else</span> <span class="s2">&quot;no    : allow grain destruction&quot;</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grain_destruction_text</span><span class="p">)</span>
+            
+            <span class="c1"># Grain distribution</span>
+            <span class="n">distribution_map</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;M     : MRN distribution&#39;</span>
+                <span class="p">}</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distribution_map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_grain_distribution</span><span class="p">])</span>
+            
+            <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                <span class="s2">&quot;yes   : Include PAH molecules?&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pah_fraction</span><span class="si">}</span><span class="s2">   : fraction of Carbon Dust Depletion in PAHs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Q     : PAH switch on QHDH &lt; Value&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pah_switch_value</span><span class="si">}</span><span class="s2">   : PAH switch on Value&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;yes   : graphite grains to be cospatial with PAHs&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graphite_cospatial</span> <span class="k">else</span> <span class="s2">&quot;no    : graphite grains to be cospatial with PAHs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;yes   : Evaluate dust temperatures and IR flux?&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_dust_temp</span> <span class="k">else</span> <span class="s2">&quot;no    : Evaluate dust temperatures and IR flux?&quot;</span>
+            <span class="p">])</span>
+        
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+            <span class="s2">&quot;P6    : the main Mappings model to use&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;D     : Default ionisation values&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;H     : Input spectral energy distribution data (usually Starburst99)&quot;</span>
+        <span class="p">])</span>
+        
+        <span class="c1"># Spectrum section</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_spec</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Q/inputs/cont_a05t23isp_vm802.spectrum  : default spectrum&quot;</span><span class="p">)</span>
+        
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_age_index</span><span class="si">}</span><span class="s2">     : Age of the HII region. Age = (n-1)*0.5 Myr&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;X     : eXit with current source&quot;</span>
+        <span class="p">])</span>
+        
+        <span class="c1"># Geometry section</span>
+        <span class="n">geo_desc</span> <span class="o">=</span> <span class="s2">&quot;Spherical Geometry&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span> <span class="o">==</span> <span class="s2">&quot;S&quot;</span> <span class="k">else</span> <span class="s2">&quot;Plane parallel geometry&quot;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span><span class="si">}</span><span class="s2">     : </span><span class="si">{</span><span class="n">geo_desc</span><span class="si">}</span><span class="s2">. (For Plane parallel, &#39;P&#39;, different options)&quot;</span><span class="p">)</span>
+        
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+            <span class="s2">&quot;L     : Source by Luminosity&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;T     : Total or Ionising Luminosity&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_luminosity</span><span class="si">}</span><span class="s2">    : bolometric source luminosity (log erg/s)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;B     : isoBaric, (const pressure)&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pressure</span><span class="si">}</span><span class="s2"> :  Pressure regime (p/k, &lt;10 as log)&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span><span class="si">}</span><span class="s2">     : log(Initial temperature)&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filling_factor</span><span class="si">}</span><span class="s2">     : filling factor (0&lt;f&lt;=1)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;q     : Give initial radius in terms of distance or Q(N) (d/q) ***nb old  options&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_logq</span><span class="si">}</span><span class="s2"> :   Q at inner radius (&lt; 100 as log)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;y     : Volume integration over the whole sphere? (y/n)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;E     : Equilibrium ionization balance.&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_step_size</span><span class="si">}</span><span class="s2">  : Step value of the photon absorption fraction  *******&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;A     : Ionisation bounded, 99% neutral **********&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;A   : Standard output&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">id_string</span><span class="si">}</span><span class="s2"> : ID string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;X   : end model&quot;</span>
+        <span class="p">])</span>
+        
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+    
+<div class="viewcode-block" id="InputModel.preview_input_file">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.preview_input_file">[docs]</a>
+    <span class="k">def</span> <span class="nf">preview_input_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Preview the input file content without writing to disk.</span>
+<span class="sd">        </span>
+<span class="sd">        Useful for checking the generated input file content before committing to disk.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            id_string (str, optional): Custom ID string for the model. If None,</span>
+<span class="sd">                auto-generates based on model parameters.</span>
+<span class="sd">                </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The input file content that would be written.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">id_string</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">id_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_id_string</span><span class="p">()</span>
+        
+        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_input_content</span><span class="p">(</span><span class="n">id_string</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input file preview:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">content</span></div>
+
+        
+<div class="viewcode-block" id="InputModel.run_mappings">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.InputModel.run_mappings">[docs]</a>
+    <span class="k">def</span> <span class="nf">run_mappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the MAPPINGS V executable on the given input .mv file.</span>
+
+<span class="sd">        Executes the MAPPINGS V photoionization code using the current model</span>
+<span class="sd">        configuration. Requires that MAPPINGS V is properly installed.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_file (str, optional): Path to the input .mv file. If None, </span>
+<span class="sd">                uses default path ~/mappings520/lab/{model_name}.mv</span>
+<span class="sd">                </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If MAPPINGS executable or input file not found.</span>
+<span class="sd">            RuntimeError: If MAPPINGS execution fails.</span>
+<span class="sd">            </span>
+<span class="sd">        Note:</span>
+<span class="sd">            This method requires MAPPINGS V to be installed in ~/mappings520/lab/</span>
+<span class="sd">            with the executable named &#39;map52&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lab_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/mappings520/lab/&quot;</span><span class="p">)</span>
+        <span class="n">exe_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lab_dir</span><span class="p">,</span> <span class="s2">&quot;map52&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">exe_path</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPPINGS executable not found: </span><span class="si">{</span><span class="n">exe_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># If no input file specified, use default in lab_dir</span>
+        <span class="k">if</span> <span class="n">input_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">input_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lab_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">.mv&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">input_file</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input file not found: </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+        <span class="c1"># Run MAPPINGS</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running MAPPINGS model &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&#39;...&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">exe_path</span><span class="p">],</span>
+                <span class="nb">input</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
+                <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">cwd</span><span class="o">=</span><span class="n">lab_dir</span><span class="p">,</span>
+                <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">elapsed</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+            <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">elapsed</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPPINGS model &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&#39; successfully run in </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">minutes</span><span class="p">)</span><span class="si">}</span><span class="s2">m </span><span class="si">{</span><span class="n">seconds</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error running MAPPINGS: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MappingsModel">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.MappingsModel">[docs]</a>
+<span class="k">class</span> <span class="nc">MappingsModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read MAPPINGS outputs into a MappingsModel object.</span>
+<span class="sd">    Output parameters can be accessed by methods. </span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+    
+<div class="viewcode-block" id="run_MAPPINGS">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.run_MAPPINGS">[docs]</a>
+<span class="k">def</span> <span class="nf">run_MAPPINGS</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run a MAPPINGS model.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+    
+<div class="viewcode-block" id="load_models">
+<a class="viewcode-back" href="../../../api/pyMAPPINGS.core.html#pyMAPPINGS.core.mappings_model.load_models">[docs]</a>
+<span class="k">def</span> <span class="nf">load_models</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load outputs of MAPPINGS models.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Teja Teppala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

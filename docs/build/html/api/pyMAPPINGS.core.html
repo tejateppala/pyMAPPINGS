@@ -1,0 +1,1429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyMAPPINGS.core package &mdash; pyMAPPINGS 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pyMAPPINGS.utils package" href="pyMAPPINGS.utils.html" />
+    <link rel="prev" title="pyMAPPINGS.analysis package" href="pyMAPPINGS.analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyMAPPINGS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyMAPPINGS.html">pyMAPPINGS package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyMAPPINGS.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyMAPPINGS.analysis.html">pyMAPPINGS.analysis package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyMAPPINGS.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyMAPPINGS.utils.html">pyMAPPINGS.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyMAPPINGS.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyMAPPINGS.html#module-pyMAPPINGS.version">pyMAPPINGS.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyMAPPINGS.html#module-pyMAPPINGS">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyMAPPINGS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="pyMAPPINGS.html">pyMAPPINGS package</a></li>
+      <li class="breadcrumb-item active">pyMAPPINGS.core package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/pyMAPPINGS.core.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pymappings-core-package">
+<h1>pyMAPPINGS.core package<a class="headerlink" href="#pymappings-core-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pyMAPPINGS.core.mappings_model">
+<span id="pymappings-core-mappings-model-module"></span><h2>pyMAPPINGS.core.mappings_model module<a class="headerlink" href="#module-pyMAPPINGS.core.mappings_model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.mappings_model.</span></span><span class="sig-name descname"><span class="pre">InputModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Object used to create and write input files for MAPPINGS V photoionization models.</p>
+<p>The InputModel class provides a comprehensive interface for configuring and generating
+MAPPINGS V input files. It handles all model parameters including abundance files,
+depletion patterns, dust properties, stellar spectra, and physical conditions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.model_name">
+<span class="sig-name descname"><span class="pre">model_name</span></span><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.model_name" title="Link to this definition"></a></dt>
+<dd><p>Name used for input and output files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.calling">
+<span class="sig-name descname"><span class="pre">calling</span></span><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.calling" title="Link to this definition"></a></dt>
+<dd><p>Identifier for the calling class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.disable_dust">
+<span class="sig-name descname"><span class="pre">disable_dust</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.disable_dust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.disable_dust" title="Link to this definition"></a></dt>
+<dd><p>Disable dust inclusion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.enable_dust">
+<span class="sig-name descname"><span class="pre">enable_dust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depl_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_switch_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'4e2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_dust_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphite_cospatial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_grain_destruction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grain_distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.enable_dust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.enable_dust" title="Link to this definition"></a></dt>
+<dd><p>Enable dust with specified depletion file and optional parameters.</p>
+<p>Convenience method that calls set_dust with include_dust=True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depl_path</strong> (<em>str</em>) – Path to dust depletion file. Must exist.</p></li>
+<li><p><strong>pah_fraction</strong> (<em>float</em><em>, </em><em>optional</em>) – Fraction of Carbon Dust Depletion in PAHs.
+Defaults to 0.3.</p></li>
+<li><p><strong>pah_switch_value</strong> (<em>str</em><em>, </em><em>optional</em>) – PAH switch on value. Defaults to “4e2”.</p></li>
+<li><p><strong>eval_dust_temp</strong> (<em>bool</em><em>, </em><em>optional</em>) – Evaluate dust temperatures and IR flux.
+Defaults to False.</p></li>
+<li><p><strong>graphite_cospatial</strong> (<em>bool</em><em>, </em><em>optional</em>) – Graphite grains cospatial with PAHs.
+Defaults to False.</p></li>
+<li><p><strong>allow_grain_destruction</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allow grain destruction. Defaults to False.</p></li>
+<li><p><strong>grain_distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Grain size distribution - ‘M’ for MRN,
+‘P’ for Power law N(a) = k a^alpha, ‘S’ for Grain Shattering Profile. Defaults to ‘M’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If PAH fraction invalid or grain distribution invalid.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If dust depletion file does not exist.</p></li>
+<li><p><strong>TypeError</strong> – If boolean parameters are not boolean type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_abund">
+<span class="sig-name descname"><span class="pre">get_abund</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_abund"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_abund" title="Link to this definition"></a></dt>
+<dd><p>Get current abundance file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current abundance file path, or None if using default.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_age">
+<span class="sig-name descname"><span class="pre">get_age</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_age" title="Link to this definition"></a></dt>
+<dd><p>Get current age index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current age index.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_depl">
+<span class="sig-name descname"><span class="pre">get_depl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_depl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_depl" title="Link to this definition"></a></dt>
+<dd><p>Get current depletion file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current depletion file path, or None if using default.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_dust_settings">
+<span class="sig-name descname"><span class="pre">get_dust_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_dust_settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_dust_settings" title="Link to this definition"></a></dt>
+<dd><p>Get current dust configuration as a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Dictionary containing all current dust settings with keys:</dt><dd><p>’include_dust’, ‘depl_path’, ‘pah_fraction’, ‘pah_switch_value’,
+‘eval_dust_temp’, ‘graphite_cospatial’, ‘allow_grain_destruction’,
+‘grain_distribution’.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_filling_factor">
+<span class="sig-name descname"><span class="pre">get_filling_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_filling_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_filling_factor" title="Link to this definition"></a></dt>
+<dd><p>Get current filling factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current filling factor as string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_geometry">
+<span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_geometry" title="Link to this definition"></a></dt>
+<dd><p>Get current geometry setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current geometry (‘S’ or ‘P’).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_ionization_param">
+<span class="sig-name descname"><span class="pre">get_ionization_param</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_ionization_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_ionization_param" title="Link to this definition"></a></dt>
+<dd><p>Get current ionization parameter as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current log ionization parameter.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_luminosity">
+<span class="sig-name descname"><span class="pre">get_luminosity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_luminosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_luminosity" title="Link to this definition"></a></dt>
+<dd><p>Get current luminosity as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current log luminosity in erg/s.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_output">
+<span class="sig-name descname"><span class="pre">get_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_output" title="Link to this definition"></a></dt>
+<dd><p>Get current output path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current output path, or None if not set.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_pressure">
+<span class="sig-name descname"><span class="pre">get_pressure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_pressure" title="Link to this definition"></a></dt>
+<dd><p>Get current log pressure as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current log pressure.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_spec">
+<span class="sig-name descname"><span class="pre">get_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_spec" title="Link to this definition"></a></dt>
+<dd><p>Get current spectrum file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current spectrum file path, or None if using default.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_step_size">
+<span class="sig-name descname"><span class="pre">get_step_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_step_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_step_size" title="Link to this definition"></a></dt>
+<dd><p>Get current step size as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current step size.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.get_temperature">
+<span class="sig-name descname"><span class="pre">get_temperature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.get_temperature" title="Link to this definition"></a></dt>
+<dd><p>Get starting electron temperature as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Starting electron temperature (log K).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.init_params">
+<span class="sig-name descname"><span class="pre">init_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.init_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.init_params" title="Link to this definition"></a></dt>
+<dd><p>Initialize model parameters with default values.</p>
+<p>Sets up default values for all MAPPINGS V model parameters including:
+physical conditions, dust properties, file paths, and numerical settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.preview_input_file">
+<span class="sig-name descname"><span class="pre">preview_input_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.preview_input_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.preview_input_file" title="Link to this definition"></a></dt>
+<dd><p>Preview the input file content without writing to disk.</p>
+<p>Useful for checking the generated input file content before committing to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_string</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom ID string for the model. If None,
+auto-generates based on model parameters.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The input file content that would be written.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.run_mappings">
+<span class="sig-name descname"><span class="pre">run_mappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.run_mappings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.run_mappings" title="Link to this definition"></a></dt>
+<dd><p>Run the MAPPINGS V executable on the given input .mv file.</p>
+<p>Executes the MAPPINGS V photoionization code using the current model
+configuration. Requires that MAPPINGS V is properly installed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_file</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the input .mv file. If None,
+uses default path ~/mappings520/lab/{model_name}.mv</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If MAPPINGS executable or input file not found.</p></li>
+<li><p><strong>RuntimeError</strong> – If MAPPINGS execution fails.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method requires MAPPINGS V to be installed in ~/mappings520/lab/
+with the executable named ‘map52’.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_abund">
+<span class="sig-name descname"><span class="pre">set_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_abund"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_abund" title="Link to this definition"></a></dt>
+<dd><p>Set abundance file path.
+Set abundance file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to abundance file. If None, uses MAPPINGS default.
+File must exist if specified.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If specified file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_age">
+<span class="sig-name descname"><span class="pre">set_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_age" title="Link to this definition"></a></dt>
+<dd><p>Set age index for stellar population.</p>
+<p>The age in Myr is calculated as (index-1) * 0.5 Myr.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em><em>, </em><em>optional</em>) – Age index. Must be non-negative integer.
+Defaults to 9 (corresponding to 4.0 Myr).</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If index is not an integer.</p></li>
+<li><p><strong>ValueError</strong> – If index is negative.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_depl">
+<span class="sig-name descname"><span class="pre">set_depl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_depl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_depl" title="Link to this definition"></a></dt>
+<dd><p>Set depletion file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to depletion file. If None, uses MAPPINGS default.
+File must exist if specified.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If specified file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_dust">
+<span class="sig-name descname"><span class="pre">set_dust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_dust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depl_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_switch_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_dust_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphite_cospatial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_grain_destruction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grain_distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_dust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_dust" title="Link to this definition"></a></dt>
+<dd><p>Configure dust settings.</p>
+<p>Comprehensive method to configure all dust-related parameters in one call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_dust</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include dust. Defaults to True.</p></li>
+<li><p><strong>depl_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to dust depletion file. Required if include_dust=True
+and no previous dust depletion path has been set.</p></li>
+<li><p><strong>pah_fraction</strong> (<em>float</em><em>, </em><em>optional</em>) – Fraction of Carbon Dust Depletion in PAHs.
+Must be between 0 and 1. Defaults to 0.3.</p></li>
+<li><p><strong>pah_switch_value</strong> (<em>str</em><em>, </em><em>optional</em>) – PAH switch on value. Defaults to “4e2”.</p></li>
+<li><p><strong>eval_dust_temp</strong> (<em>bool</em><em>, </em><em>optional</em>) – Evaluate dust temperatures and IR flux.
+Defaults to False.</p></li>
+<li><p><strong>graphite_cospatial</strong> (<em>bool</em><em>, </em><em>optional</em>) – Graphite grains cospatial with PAHs.
+Defaults to False.</p></li>
+<li><p><strong>allow_grain_destruction</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allow grain destruction. Defaults to False.</p></li>
+<li><p><strong>grain_distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Grain size distribution - ‘M’ for MRN,
+‘P’ for Power law N(a) = k a^alpha, ‘S’ for Grain Shattering Profile. Defaults to ‘M’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If include_dust=True but no depletion path is provided, or if
+    PAH fraction is not between 0 and 1, or if grain_distribution is invalid.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If dust depletion file does not exist.</p></li>
+<li><p><strong>TypeError</strong> – If boolean parameters are not boolean type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_filling_factor">
+<span class="sig-name descname"><span class="pre">set_filling_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_filling_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_filling_factor" title="Link to this definition"></a></dt>
+<dd><p>Set filling factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ff</strong> (<em>float</em><em>, </em><em>optional</em>) – Filling factor, must be between 0 and 1.
+Represents the volume fraction filled by ionized gas. Defaults to 1.0.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If ff is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_geometry">
+<span class="sig-name descname"><span class="pre">set_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_geometry" title="Link to this definition"></a></dt>
+<dd><p>Set model geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>geo</strong> (<em>str</em><em>, </em><em>optional</em>) – Geometry type. Options are:
+‘S’ for spherical geometry
+‘P’ for plane-parallel geometry
+Defaults to ‘S’.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If geometry is not ‘S’ or ‘P’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_grain_destruction">
+<span class="sig-name descname"><span class="pre">set_grain_destruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_grain_destruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_grain_destruction" title="Link to this definition"></a></dt>
+<dd><p>Set grain destruction option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>allow</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to allow grain destruction. Defaults to False.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If allow is not a boolean.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_grain_distribution">
+<span class="sig-name descname"><span class="pre">set_grain_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_grain_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_grain_distribution" title="Link to this definition"></a></dt>
+<dd><p>Set grain size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Grain size distribution type. Options are:
+‘M’ for MRN (Mathis, Rumpl &amp; Nordsieck)
+‘P’ for Power law N(a) = k a^alpha
+‘S’ for Grain Shattering Profile
+Defaults to ‘M’.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If distribution is not one of the valid options.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_ionization_param">
+<span class="sig-name descname"><span class="pre">set_ionization_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_ionization_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_ionization_param" title="Link to this definition"></a></dt>
+<dd><p>Set log ionization parameter.</p>
+<p>The ionization parameter is defined as the ratio of ionizing photon
+density to hydrogen density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logq</strong> (<em>float</em><em>, </em><em>optional</em>) – Log ionization parameter. Defaults to 8.00.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns self for method chaining.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyMAPPINGS.core.mappings_model.InputModel" title="pyMAPPINGS.core.mappings_model.InputModel">InputModel</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If logq is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_luminosity">
+<span class="sig-name descname"><span class="pre">set_luminosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logL</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_luminosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_luminosity" title="Link to this definition"></a></dt>
+<dd><p>Set log bolometric luminosity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logL</strong> (<em>float</em><em>, </em><em>optional</em>) – Log bolometric source luminosity in erg/s.
+Defaults to 40.00.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If logL is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_output">
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_output" title="Link to this definition"></a></dt>
+<dd><p>Set output path for model results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Output directory path. Directory will be created
+if it doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_pressure">
+<span class="sig-name descname"><span class="pre">set_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_pressure" title="Link to this definition"></a></dt>
+<dd><p>Set log pressure (p/k).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logp</strong> (<em>float</em><em>, </em><em>optional</em>) – Log pressure in units of p/k. Defaults to 6.00.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_spec">
+<span class="sig-name descname"><span class="pre">set_spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_spec" title="Link to this definition"></a></dt>
+<dd><p>Set spectrum file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to spectrum file. If None, uses MAPPINGS default.
+File must exist if specified.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If specified file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_step_size">
+<span class="sig-name descname"><span class="pre">set_step_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_step_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_step_size" title="Link to this definition"></a></dt>
+<dd><p>Set step size for photon absorption fraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – Step value of the photon absorption fraction.
+Must be positive. Defaults to 0.02.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If step is not a number.</p></li>
+<li><p><strong>ValueError</strong> – If step is not positive.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.set_temperature">
+<span class="sig-name descname"><span class="pre">set_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logTe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.set_temperature" title="Link to this definition"></a></dt>
+<dd><p>Set starting electron temperature.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Electron temperature is a free parameter, not a fixed input parameter
+for the model. This sets the initial guess value.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logTe</strong> (<em>float</em><em>, </em><em>optional</em>) – Log electron temperature in K. Defaults to 4.00.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If logTe is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.summary" title="Link to this definition"></a></dt>
+<dd><p>Print a summary of current parameter settings.</p>
+<p>Displays all current model parameters in a formatted table for easy review.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.validate_params">
+<span class="sig-name descname"><span class="pre">validate_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.validate_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.validate_params" title="Link to this definition"></a></dt>
+<dd><p>Validate all current parameters for consistency and file existence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if all parameters are valid.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If any parameter validation fails, with details of all errors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.InputModel.write_input_file">
+<span class="sig-name descname"><span class="pre">write_input_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.write_input_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.InputModel.write_input_file" title="Link to this definition"></a></dt>
+<dd><p>Generate and write the MAPPINGS input file as .mv format.</p>
+<p>Creates a complete MAPPINGS V input file based on current parameter settings
+and writes it to the specified location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Output filename. Defaults to {model_name}.mv.</p></li>
+<li><p><strong>id_string</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom ID string for the model. If None,
+auto-generates based on model parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the created input file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IOError</strong> – If file cannot be written.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">InputModel</span><span class="p">(</span><span class="s2">&quot;test_model&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_pressure</span><span class="p">(</span><span class="mf">6.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">write_input_file</span><span class="p">()</span>
+<span class="go">Input file written to: ~/mappings520/lab/test_model.mv</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.MappingsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.mappings_model.</span></span><span class="sig-name descname"><span class="pre">MappingsModel</span></span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#MappingsModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.MappingsModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Read MAPPINGS outputs into a MappingsModel object.
+Output parameters can be accessed by methods.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.load_models">
+<span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.mappings_model.</span></span><span class="sig-name descname"><span class="pre">load_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#load_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.load_models" title="Link to this definition"></a></dt>
+<dd><p>Load outputs of MAPPINGS models.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.mappings_model.run_MAPPINGS">
+<span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.mappings_model.</span></span><span class="sig-name descname"><span class="pre">run_MAPPINGS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#run_MAPPINGS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.mappings_model.run_MAPPINGS" title="Link to this definition"></a></dt>
+<dd><p>Run a MAPPINGS model.</p>
+</dd></dl>
+
+</section>
+<section id="module-pyMAPPINGS.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyMAPPINGS.core" title="Link to this heading"></a></h2>
+<p>pyMAPPINGS.core.__init__ file</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.</span></span><span class="sig-name descname"><span class="pre">InputModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Object used to create and write input files for MAPPINGS V photoionization models.</p>
+<p>The InputModel class provides a comprehensive interface for configuring and generating
+MAPPINGS V input files. It handles all model parameters including abundance files,
+depletion patterns, dust properties, stellar spectra, and physical conditions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.model_name">
+<span class="sig-name descname"><span class="pre">model_name</span></span><a class="headerlink" href="#pyMAPPINGS.core.InputModel.model_name" title="Link to this definition"></a></dt>
+<dd><p>Name used for input and output files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.calling">
+<span class="sig-name descname"><span class="pre">calling</span></span><a class="headerlink" href="#pyMAPPINGS.core.InputModel.calling" title="Link to this definition"></a></dt>
+<dd><p>Identifier for the calling class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.disable_dust">
+<span class="sig-name descname"><span class="pre">disable_dust</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.disable_dust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.disable_dust" title="Link to this definition"></a></dt>
+<dd><p>Disable dust inclusion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.enable_dust">
+<span class="sig-name descname"><span class="pre">enable_dust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depl_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_switch_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'4e2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_dust_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphite_cospatial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_grain_destruction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grain_distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.enable_dust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.enable_dust" title="Link to this definition"></a></dt>
+<dd><p>Enable dust with specified depletion file and optional parameters.</p>
+<p>Convenience method that calls set_dust with include_dust=True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depl_path</strong> (<em>str</em>) – Path to dust depletion file. Must exist.</p></li>
+<li><p><strong>pah_fraction</strong> (<em>float</em><em>, </em><em>optional</em>) – Fraction of Carbon Dust Depletion in PAHs.
+Defaults to 0.3.</p></li>
+<li><p><strong>pah_switch_value</strong> (<em>str</em><em>, </em><em>optional</em>) – PAH switch on value. Defaults to “4e2”.</p></li>
+<li><p><strong>eval_dust_temp</strong> (<em>bool</em><em>, </em><em>optional</em>) – Evaluate dust temperatures and IR flux.
+Defaults to False.</p></li>
+<li><p><strong>graphite_cospatial</strong> (<em>bool</em><em>, </em><em>optional</em>) – Graphite grains cospatial with PAHs.
+Defaults to False.</p></li>
+<li><p><strong>allow_grain_destruction</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allow grain destruction. Defaults to False.</p></li>
+<li><p><strong>grain_distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Grain size distribution - ‘M’ for MRN,
+‘P’ for Power law N(a) = k a^alpha, ‘S’ for Grain Shattering Profile. Defaults to ‘M’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If PAH fraction invalid or grain distribution invalid.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If dust depletion file does not exist.</p></li>
+<li><p><strong>TypeError</strong> – If boolean parameters are not boolean type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_abund">
+<span class="sig-name descname"><span class="pre">get_abund</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_abund"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_abund" title="Link to this definition"></a></dt>
+<dd><p>Get current abundance file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current abundance file path, or None if using default.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_age">
+<span class="sig-name descname"><span class="pre">get_age</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_age" title="Link to this definition"></a></dt>
+<dd><p>Get current age index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current age index.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_depl">
+<span class="sig-name descname"><span class="pre">get_depl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_depl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_depl" title="Link to this definition"></a></dt>
+<dd><p>Get current depletion file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current depletion file path, or None if using default.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_dust_settings">
+<span class="sig-name descname"><span class="pre">get_dust_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_dust_settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_dust_settings" title="Link to this definition"></a></dt>
+<dd><p>Get current dust configuration as a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Dictionary containing all current dust settings with keys:</dt><dd><p>’include_dust’, ‘depl_path’, ‘pah_fraction’, ‘pah_switch_value’,
+‘eval_dust_temp’, ‘graphite_cospatial’, ‘allow_grain_destruction’,
+‘grain_distribution’.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_filling_factor">
+<span class="sig-name descname"><span class="pre">get_filling_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_filling_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_filling_factor" title="Link to this definition"></a></dt>
+<dd><p>Get current filling factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current filling factor as string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_geometry">
+<span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_geometry" title="Link to this definition"></a></dt>
+<dd><p>Get current geometry setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current geometry (‘S’ or ‘P’).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_ionization_param">
+<span class="sig-name descname"><span class="pre">get_ionization_param</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_ionization_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_ionization_param" title="Link to this definition"></a></dt>
+<dd><p>Get current ionization parameter as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current log ionization parameter.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_luminosity">
+<span class="sig-name descname"><span class="pre">get_luminosity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_luminosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_luminosity" title="Link to this definition"></a></dt>
+<dd><p>Get current luminosity as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current log luminosity in erg/s.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_output">
+<span class="sig-name descname"><span class="pre">get_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_output" title="Link to this definition"></a></dt>
+<dd><p>Get current output path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current output path, or None if not set.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_pressure">
+<span class="sig-name descname"><span class="pre">get_pressure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_pressure" title="Link to this definition"></a></dt>
+<dd><p>Get current log pressure as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current log pressure.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_spec">
+<span class="sig-name descname"><span class="pre">get_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_spec" title="Link to this definition"></a></dt>
+<dd><p>Get current spectrum file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current spectrum file path, or None if using default.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_step_size">
+<span class="sig-name descname"><span class="pre">get_step_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_step_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_step_size" title="Link to this definition"></a></dt>
+<dd><p>Get current step size as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current step size.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.get_temperature">
+<span class="sig-name descname"><span class="pre">get_temperature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.get_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.get_temperature" title="Link to this definition"></a></dt>
+<dd><p>Get starting electron temperature as float.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Starting electron temperature (log K).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.init_params">
+<span class="sig-name descname"><span class="pre">init_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.init_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.init_params" title="Link to this definition"></a></dt>
+<dd><p>Initialize model parameters with default values.</p>
+<p>Sets up default values for all MAPPINGS V model parameters including:
+physical conditions, dust properties, file paths, and numerical settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.preview_input_file">
+<span class="sig-name descname"><span class="pre">preview_input_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.preview_input_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.preview_input_file" title="Link to this definition"></a></dt>
+<dd><p>Preview the input file content without writing to disk.</p>
+<p>Useful for checking the generated input file content before committing to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_string</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom ID string for the model. If None,
+auto-generates based on model parameters.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The input file content that would be written.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.run_mappings">
+<span class="sig-name descname"><span class="pre">run_mappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.run_mappings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.run_mappings" title="Link to this definition"></a></dt>
+<dd><p>Run the MAPPINGS V executable on the given input .mv file.</p>
+<p>Executes the MAPPINGS V photoionization code using the current model
+configuration. Requires that MAPPINGS V is properly installed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_file</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the input .mv file. If None,
+uses default path ~/mappings520/lab/{model_name}.mv</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If MAPPINGS executable or input file not found.</p></li>
+<li><p><strong>RuntimeError</strong> – If MAPPINGS execution fails.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method requires MAPPINGS V to be installed in ~/mappings520/lab/
+with the executable named ‘map52’.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_abund">
+<span class="sig-name descname"><span class="pre">set_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_abund"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_abund" title="Link to this definition"></a></dt>
+<dd><p>Set abundance file path.
+Set abundance file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to abundance file. If None, uses MAPPINGS default.
+File must exist if specified.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If specified file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_age">
+<span class="sig-name descname"><span class="pre">set_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_age" title="Link to this definition"></a></dt>
+<dd><p>Set age index for stellar population.</p>
+<p>The age in Myr is calculated as (index-1) * 0.5 Myr.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em><em>, </em><em>optional</em>) – Age index. Must be non-negative integer.
+Defaults to 9 (corresponding to 4.0 Myr).</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If index is not an integer.</p></li>
+<li><p><strong>ValueError</strong> – If index is negative.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_depl">
+<span class="sig-name descname"><span class="pre">set_depl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_depl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_depl" title="Link to this definition"></a></dt>
+<dd><p>Set depletion file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to depletion file. If None, uses MAPPINGS default.
+File must exist if specified.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If specified file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_dust">
+<span class="sig-name descname"><span class="pre">set_dust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_dust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depl_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pah_switch_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_dust_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphite_cospatial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_grain_destruction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grain_distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_dust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_dust" title="Link to this definition"></a></dt>
+<dd><p>Configure dust settings.</p>
+<p>Comprehensive method to configure all dust-related parameters in one call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_dust</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include dust. Defaults to True.</p></li>
+<li><p><strong>depl_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to dust depletion file. Required if include_dust=True
+and no previous dust depletion path has been set.</p></li>
+<li><p><strong>pah_fraction</strong> (<em>float</em><em>, </em><em>optional</em>) – Fraction of Carbon Dust Depletion in PAHs.
+Must be between 0 and 1. Defaults to 0.3.</p></li>
+<li><p><strong>pah_switch_value</strong> (<em>str</em><em>, </em><em>optional</em>) – PAH switch on value. Defaults to “4e2”.</p></li>
+<li><p><strong>eval_dust_temp</strong> (<em>bool</em><em>, </em><em>optional</em>) – Evaluate dust temperatures and IR flux.
+Defaults to False.</p></li>
+<li><p><strong>graphite_cospatial</strong> (<em>bool</em><em>, </em><em>optional</em>) – Graphite grains cospatial with PAHs.
+Defaults to False.</p></li>
+<li><p><strong>allow_grain_destruction</strong> (<em>bool</em><em>, </em><em>optional</em>) – Allow grain destruction. Defaults to False.</p></li>
+<li><p><strong>grain_distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Grain size distribution - ‘M’ for MRN,
+‘P’ for Power law N(a) = k a^alpha, ‘S’ for Grain Shattering Profile. Defaults to ‘M’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If include_dust=True but no depletion path is provided, or if
+    PAH fraction is not between 0 and 1, or if grain_distribution is invalid.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If dust depletion file does not exist.</p></li>
+<li><p><strong>TypeError</strong> – If boolean parameters are not boolean type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_filling_factor">
+<span class="sig-name descname"><span class="pre">set_filling_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_filling_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_filling_factor" title="Link to this definition"></a></dt>
+<dd><p>Set filling factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ff</strong> (<em>float</em><em>, </em><em>optional</em>) – Filling factor, must be between 0 and 1.
+Represents the volume fraction filled by ionized gas. Defaults to 1.0.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If ff is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_geometry">
+<span class="sig-name descname"><span class="pre">set_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_geometry" title="Link to this definition"></a></dt>
+<dd><p>Set model geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>geo</strong> (<em>str</em><em>, </em><em>optional</em>) – Geometry type. Options are:
+‘S’ for spherical geometry
+‘P’ for plane-parallel geometry
+Defaults to ‘S’.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If geometry is not ‘S’ or ‘P’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_grain_destruction">
+<span class="sig-name descname"><span class="pre">set_grain_destruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_grain_destruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_grain_destruction" title="Link to this definition"></a></dt>
+<dd><p>Set grain destruction option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>allow</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to allow grain destruction. Defaults to False.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If allow is not a boolean.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_grain_distribution">
+<span class="sig-name descname"><span class="pre">set_grain_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_grain_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_grain_distribution" title="Link to this definition"></a></dt>
+<dd><p>Set grain size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Grain size distribution type. Options are:
+‘M’ for MRN (Mathis, Rumpl &amp; Nordsieck)
+‘P’ for Power law N(a) = k a^alpha
+‘S’ for Grain Shattering Profile
+Defaults to ‘M’.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If distribution is not one of the valid options.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_ionization_param">
+<span class="sig-name descname"><span class="pre">set_ionization_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_ionization_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_ionization_param" title="Link to this definition"></a></dt>
+<dd><p>Set log ionization parameter.</p>
+<p>The ionization parameter is defined as the ratio of ionizing photon
+density to hydrogen density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logq</strong> (<em>float</em><em>, </em><em>optional</em>) – Log ionization parameter. Defaults to 8.00.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns self for method chaining.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyMAPPINGS.core.InputModel" title="pyMAPPINGS.core.InputModel">InputModel</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If logq is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_luminosity">
+<span class="sig-name descname"><span class="pre">set_luminosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logL</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_luminosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_luminosity" title="Link to this definition"></a></dt>
+<dd><p>Set log bolometric luminosity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logL</strong> (<em>float</em><em>, </em><em>optional</em>) – Log bolometric source luminosity in erg/s.
+Defaults to 40.00.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If logL is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_output">
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_output" title="Link to this definition"></a></dt>
+<dd><p>Set output path for model results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Output directory path. Directory will be created
+if it doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_pressure">
+<span class="sig-name descname"><span class="pre">set_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_pressure" title="Link to this definition"></a></dt>
+<dd><p>Set log pressure (p/k).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logp</strong> (<em>float</em><em>, </em><em>optional</em>) – Log pressure in units of p/k. Defaults to 6.00.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_spec">
+<span class="sig-name descname"><span class="pre">set_spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_spec" title="Link to this definition"></a></dt>
+<dd><p>Set spectrum file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to spectrum file. If None, uses MAPPINGS default.
+File must exist if specified.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If specified file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_step_size">
+<span class="sig-name descname"><span class="pre">set_step_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_step_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_step_size" title="Link to this definition"></a></dt>
+<dd><p>Set step size for photon absorption fraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – Step value of the photon absorption fraction.
+Must be positive. Defaults to 0.02.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If step is not a number.</p></li>
+<li><p><strong>ValueError</strong> – If step is not positive.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.set_temperature">
+<span class="sig-name descname"><span class="pre">set_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logTe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.set_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.set_temperature" title="Link to this definition"></a></dt>
+<dd><p>Set starting electron temperature.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Electron temperature is a free parameter, not a fixed input parameter
+for the model. This sets the initial guess value.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logTe</strong> (<em>float</em><em>, </em><em>optional</em>) – Log electron temperature in K. Defaults to 4.00.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If logTe is not a number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.summary" title="Link to this definition"></a></dt>
+<dd><p>Print a summary of current parameter settings.</p>
+<p>Displays all current model parameters in a formatted table for easy review.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.validate_params">
+<span class="sig-name descname"><span class="pre">validate_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.validate_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.validate_params" title="Link to this definition"></a></dt>
+<dd><p>Validate all current parameters for consistency and file existence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if all parameters are valid.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If any parameter validation fails, with details of all errors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.InputModel.write_input_file">
+<span class="sig-name descname"><span class="pre">write_input_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#InputModel.write_input_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.InputModel.write_input_file" title="Link to this definition"></a></dt>
+<dd><p>Generate and write the MAPPINGS input file as .mv format.</p>
+<p>Creates a complete MAPPINGS V input file based on current parameter settings
+and writes it to the specified location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Output filename. Defaults to {model_name}.mv.</p></li>
+<li><p><strong>id_string</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom ID string for the model. If None,
+auto-generates based on model parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the created input file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IOError</strong> – If file cannot be written.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">InputModel</span><span class="p">(</span><span class="s2">&quot;test_model&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_pressure</span><span class="p">(</span><span class="mf">6.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">write_input_file</span><span class="p">()</span>
+<span class="go">Input file written to: ~/mappings520/lab/test_model.mv</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.MappingsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.</span></span><span class="sig-name descname"><span class="pre">MappingsModel</span></span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#MappingsModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.MappingsModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Read MAPPINGS outputs into a MappingsModel object.
+Output parameters can be accessed by methods.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.load_models">
+<span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.</span></span><span class="sig-name descname"><span class="pre">load_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#load_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.load_models" title="Link to this definition"></a></dt>
+<dd><p>Load outputs of MAPPINGS models.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyMAPPINGS.core.run_MAPPINGS">
+<span class="sig-prename descclassname"><span class="pre">pyMAPPINGS.core.</span></span><span class="sig-name descname"><span class="pre">run_MAPPINGS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyMAPPINGS/core/mappings_model.html#run_MAPPINGS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyMAPPINGS.core.run_MAPPINGS" title="Link to this definition"></a></dt>
+<dd><p>Run a MAPPINGS model.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyMAPPINGS.analysis.html" class="btn btn-neutral float-left" title="pyMAPPINGS.analysis package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyMAPPINGS.utils.html" class="btn btn-neutral float-right" title="pyMAPPINGS.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Teja Teppala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

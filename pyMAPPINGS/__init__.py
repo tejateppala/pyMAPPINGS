@@ -3,20 +3,21 @@ pyMAPPINGS is a Python library for the [MAPPINGS V](https://mappings.anu.edu.au/
 
 teja.teppala@gmail.com
 """
-__all__ = ['analysis', 'core']
+__all__ = ['analysis', 'core', 'utils']
 
 from .version import __version__
 
 import sys
 __pyversion__ = sys.version_info[0]
 
-from .utils.Config import _Config
-config = _Config()
-log_ = _Config.log_
-log_.message('Starting pyMAPPINGS.', calling = 'PyMAPPINGS init')
+#from .utils.Config import _Config
+#config = _Config()
+#log_ = _Config.log_
+#log_.message('Starting pyMAPPINGS.', calling = 'PyMAPPINGS init')
 
 # from XX import YY, ZZ
 from .core import *
 from .analysis import *
+from .utils import *
 
-log_.message('pyMAPPINGS ready.', calling = 'PyMAPPINGS init')
+#log_.message('pyMAPPINGS ready.', calling = 'PyMAPPINGS init')

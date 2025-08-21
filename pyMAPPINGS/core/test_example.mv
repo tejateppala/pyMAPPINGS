@@ -18,7 +18,6 @@ H     : Input spectral energy distribution data (usually Starburst99)
 /home/teja/mappings520/scripts/modelgrids/HII-grid401/Q/inputs/cont_a05t23isp_vm802.spectrum
 9     : Age of the HII region. Age = (n-1)*0.5 Myr
 X     : eXit with current source
-N     : Include cosmic ray heating
 S     : Spherical Geometry. (For Plane parallel, 'P', different options)
 L     : Source by Luminosity
 T     : Total or Ionising Luminosity
